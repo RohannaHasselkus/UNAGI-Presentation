@@ -6,4 +6,4 @@ The slides include:
 - Visualizations of network inference and analysis
 
 This presentation is intended for an audience with a background in any science, not just computational biology. Please access my presentation with this link:
-https://rohannahasselkus.github.io/Presentation/
+[https://rohannahasselkus.github.io/UNAGI-Presentation/]
