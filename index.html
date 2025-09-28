@@ -13,26 +13,24 @@
 
 <nav id="side-menu">
   <ul>
-    <li><a href="#slide0">Introduction (theory)</a></li>
-    <li><a href="#slide1"> Why Study GRNs </a></li>
-    <li><a href="#slide2">Bipartite and Unipartite</a></li>
-    <li><a href="#slide3">Background : BLOBFISH</a></li>
-    <li><a href="#slide4">Introducing : UNAGI</a></li>
-    <li><a href="#slide5">Theorem 1</a></li>
-    <li><a href="#slide6">Theorem 2</a></li>
-    <li><a href="#slide7">Validation</a></li>
-    <li><a href="slide8">Introduction to GRNs
-    <li><a href="#slide9"> Genes of Interest </a></li>
-    <li><a href="#slide10"> Overview of Tissues </a></li>
-    <li><a href="#slide11"> Results </a></li>
-    <li><a href="#slide12"> Interpretation </a></li>
-    <li><a href="#slide13"> Applications and Continued work</a></li>
-    <li><a href="#slide14"> Acknowledgments</a></li>
-    <li><a href="#slide15"> Works Cited</a></li>
-
+    <li><a href="#slide0" data-slide="0">Introduction (theory)</a></li>
+    <li><a href="#slide1" data-slide="1">Example GRNs</a></li>
+    <li><a href="#slide2" data-slide="2">Why Study GRNs</a></li>
+    <li><a href="#slide3" data-slide="3">Bipartite and Unipartite</a></li>
+    <li><a href="#slide4" data-slide="4">Background : BLOBFISH</a></li>
+    <li><a href="#slide5" data-slide="5">Introducing : UNAGI</a></li>
+    <li><a href="#slide6" data-slide="6">Theorem 1</a></li>
+    <li><a href="#slide7" data-slide="7">Theorem 2</a></li>
+    <li><a href="#slide8" data-slide="8">Validation</a></li>
+    <li><a href="#slide9" data-slide="9">Genes of Interest</a></li>
+    <li><a href="#slide10" data-slide="10">Overview of Tissues</a></li>
+    <li><a href="#slide11" data-slide="11">Results</a></li>
+    <li><a href="#slide12" data-slide="12">Interpretation</a></li>
+    <li><a href="#slide13" data-slide="13">Applications and Continued work</a></li>
+    <li><a href="#slide14" data-slide="14">Acknowledgments</a></li>
+    <li><a href="#slide15" data-slide="15">Works Cited</a></li>
   </ul>
 </nav>
-
 
 <canvas id="network"></canvas>
 
@@ -43,39 +41,69 @@
 <!-- Introduction (theory) -->
 <div class="slide active" id="slide0">
   <h1>An Introduction to Gene Regulatory Networks</h1>
-  <p>...</p>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Network.png/640px-Network.png" alt="Gene Network Example">
+  <ul>
+    <li><p>A GRN is a map of how genes control the activity of eachother.</p></li>
+    <li> <p> Genes code for proteins such as transcription that repress or turn off other genes. </p></li>
+    <li><p>These interactions work on a larger scale to affect cell behavior</p></li>
+  </ul>
+  
+  <img src="">
   <div class="controls">
     <button disabled id="prev0">Prev</button>
     <button id="next0">Next</button>
   </div>
 </div>
 
-<!-- Why study GRNs -->
+<!-- Example GRNs -->
 <div class="slide" id="slide1">
-  <h1>The importance of Gene Regulatory Networks</h1>
-  <p>...</p>
+  <h1>Example Gene Regulatory Networks</h1>
+  <ul>
+     <b>Bistable Toggle Switch:</b> Two genes, A and B mutually inhibit each other. This creates bistability where the system is stable with only one of the genes on.
+        <br><br>
+        Gardner TS, Cantor CR, Collins JJ. Construction of a genetic toggle switch in Escherichia coli. Nature. 2000 Jan 20;403(6767):339-42. doi: 10.1038/35002131. PMID: 10659857. 
+
+      <br><br>
+      <b>Repressilator:</b> 
+        Gene A represses Gene B, Gene B represses Gene C and Gene C represses gene A. The delayed repression and feedback create oscillatory dynamics in gene expression. This means that the gene levels rise and fall in cycles.
+        <br><br> 
+        Elowitz MB, Leibler S. A synthetic oscillatory network of transcriptional regulators. Nature. 2000 Jan 20;403(6767):335-8. doi: 10.1038/35002125. PMID: 10659856.
+
+      <br><br>
+      <b>Signaling Cascade:</b> 
+      A activates B, B activates C and C activates A. A small initial input produces a large output in gene expression downstream.
+        <br><br>
+         Morrison DK. MAP kinase pathways. Cold Spring Harb Perspect Biol. 2012 Nov 1;4(11):a011254. doi: 10.1101/cshperspect.a011254. PMID: 23125017; PMCID: PMC3536342
+  </ul>
+  
+  <img src="">
   <div class="controls">
     <button id="prev1">Prev</button>
     <button id="next1">Next</button>
   </div>
 </div>
 
-
-<!-- Unipartite and Bipartite -->
+<!-- Why study GRNs -->
 <div class="slide" id="slide2">
-  <h1>Unipartite and Bipartite Networks</h1>
-  <p> .... </p>
-  </ul>
+  <h1>The importance of Gene Regulatory Networks</h1>
+  <p>...</p>
   <div class="controls">
     <button id="prev2">Prev</button>
     <button id="next2">Next</button>
   </div>
 </div>
 
+<!-- Unipartite and Bipartite -->
+<div class="slide" id="slide3">
+  <h1>Unipartite and Bipartite Networks</h1>
+  <p> .... </p>
+  <div class="controls">
+    <button id="prev3">Prev</button>
+    <button id="next3">Next</button>
+  </div>
+</div>
 
 <!-- Blobfish -->
-<div class="slide" id="slide3">
+<div class="slide" id="slide4">
   <h1>Background: BLOBFISH</h1>
   <p> Bipartite Limited Subnetworks from Multiple Observations using Breadth-First Search with Constrained Hops</p>
   <ul>
@@ -85,24 +113,14 @@
     <li>Computational inference (co-expression, Bayesian networks, etc.)</li>
   </ul>
   <div class="controls">
-    <button id="prev3">Prev</button>
-    <button id="next3">Next</button>
-  </div>
-</div>
-
-<!-- UNAGI-->
-<div class="slide" id="slide4">
-  <h1>Introduction: UNAGI</h1>
-  <p> </p>
-  <div class="controls">
     <button id="prev4">Prev</button>
     <button id="next4">Next</button>
   </div>
 </div>
 
-<!-- Theorem 1-->
+<!-- UNAGI-->
 <div class="slide" id="slide5">
-  <h1>Theorem 1</h1>
+  <h1>Introduction: UNAGI</h1>
   <p> </p>
   <div class="controls">
     <button id="prev5">Prev</button>
@@ -110,9 +128,9 @@
   </div>
 </div>
 
-<!-- Theorem 2-->
+<!-- Theorem 1-->
 <div class="slide" id="slide6">
-  <h1>Theorem 2</h1>
+  <h1>Theorem 1</h1>
   <p> </p>
   <div class="controls">
     <button id="prev6">Prev</button>
@@ -120,9 +138,9 @@
   </div>
 </div>
 
-<!-- Validation-->
+<!-- Theorem 2-->
 <div class="slide" id="slide7">
-  <h1>Validation</h1>
+  <h1>Theorem 2</h1>
   <p> </p>
   <div class="controls">
     <button id="prev7">Prev</button>
@@ -130,9 +148,9 @@
   </div>
 </div>
 
-<!-- Introduction to GRNs -->
+<!-- Validation-->
 <div class="slide" id="slide8">
-  <h1>Introduction to GRNs</h1>
+  <h1>Validation</h1>
   <p> </p>
   <div class="controls">
     <button id="prev8">Prev</button>
@@ -140,9 +158,213 @@
   </div>
 </div>
 
+<!-- Genes of Interest -->
+<div class="slide" id="slide9">
+  <h1>Genes of Interest</h1>
+  <p> </p>
+  <div class="controls">
+    <button id="prev9">Prev</button>
+    <button id="next9">Next</button>
+  </div>
+</div>
 
+<!-- Overview of Tissues -->
+<div class="slide" id="slide10">
+  <h1>Overview of Tissues</h1>
+  <p> </p>
+  <div class="controls">
+    <button id="prev10">Prev</button>
+    <button id="next10">Next</button>
+  </div>
+</div>
 
+<!-- Results -->
+<div class="slide" id="slide11">
+  <h1>Results</h1>
+  <p> </p>
+  <div class="controls">
+    <button id="prev11">Prev</button>
+    <button id="next11">Next</button>
+  </div>
+</div>
 
-<script type="text/javascript" src="script.js"></script>
+<!-- Interpretation -->
+<div class="slide" id="slide12">
+  <h1>Interpretation</h1>
+  <p> </p>
+  <div class="controls">
+    <button id="prev12">Prev</button>
+    <button id="next12">Next</button>
+  </div>
+</div>
+
+<!-- Applications and Continued Work -->
+<div class="slide" id="slide13">
+  <h1>Applications and Continued Work</h1>
+  <p> </p>
+  <div class="controls">
+    <button id="prev13">Prev</button>
+    <button id="next13">Next</button>
+  </div>
+</div>
+
+<!-- Acknowledgments -->
+<div class="slide" id="slide14">
+  <h1>Acknowledgments</h1>
+  <p> </p>
+  <div class="controls">
+    <button id="prev14">Prev</button>
+    <button id="next14">Next</button>
+  </div>
+</div>
+
+<!-- Works Cited -->
+<div class="slide" id="slide15">
+  <h1>Works Cited</h1>
+  <p> </p>
+  <div class="controls">
+    <button id="prev15">Prev</button>
+    <button disabled id="next15">Next</button>
+  </div>
+</div>
+
+<script>
+// ----------------------
+// SLIDE LOGIC (Enhanced version)
+// ----------------------
+let currentSlide = 0;
+const slides = document.querySelectorAll(".slide");
+const totalSlides = slides.length;
+
+function showSlide(n){
+  // Handle wraparound
+  if(n >= totalSlides) n = 0;
+  if(n < 0) n = totalSlides - 1;
+  
+  slides[currentSlide].classList.remove("active");
+  slides[n].classList.add("active");
+  currentSlide = n;
+}
+
+// Enhanced button handling with better error checking
+slides.forEach((slide,i)=>{
+  const prev = slide.querySelector("#prev"+i);
+  const next = slide.querySelector("#next"+i);
+  if(prev) prev.addEventListener("click", ()=>showSlide(i-1));
+  if(next) next.addEventListener("click", ()=>showSlide(i+1));
+});
+
+// Arrow key navigation
+document.addEventListener("keydown",(e)=>{
+  if(e.key==="ArrowRight") showSlide(currentSlide+1);
+  if(e.key==="ArrowLeft") showSlide(currentSlide-1);
+});
+
+// ----------------------
+// YOUR ORIGINAL NETWORK BACKGROUND
+// ----------------------
+const canvas = document.getElementById("network");
+const ctx = canvas.getContext("2d");
+let width, height;
+let nodes = [];
+const numNodes = 150; // number of dots
+
+function resize(){
+  width = window.innerWidth;
+  height = window.innerHeight;
+  canvas.width = width;
+  canvas.height = height;
+}
+window.addEventListener("resize", resize);
+resize();
+
+function initNodes(){
+  nodes = [];
+  for(let i=0;i<numNodes;i++){
+    nodes.push({
+      x: Math.random()*width,
+      y: Math.random()*height,
+      vx: (Math.random()-0.5)*0.5,
+      vy: (Math.random()-0.5)*0.5,
+      r: 3 + Math.random()*3 // larger dots: 3–6
+    });
+  }
+}
+initNodes();
+
+function draw(){
+  ctx.clearRect(0,0,width,height);
+  // edges
+  for(let i=0;i<numNodes;i++){
+    for(let j=i+1;j<numNodes;j++){
+      const dx = nodes[i].x-nodes[j].x;
+      const dy = nodes[i].y-nodes[j].y;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      if(dist<120){
+        ctx.strokeStyle = `rgba(111,177,160,${1-dist/120})`;
+        ctx.lineWidth = 2; // thicker lines
+        ctx.beginPath();
+        ctx.moveTo(nodes[i].x,nodes[i].y);
+        ctx.lineTo(nodes[j].x,nodes[j].y);
+        ctx.stroke();
+      }
+    }
+  }
+  // nodes
+  nodes.forEach(n=>{
+    ctx.beginPath();
+    ctx.arc(n.x,n.y,n.r,0,2*Math.PI);
+    ctx.fillStyle = "#2a9d8f";
+    ctx.fill();
+  });
+  update();
+  requestAnimationFrame(draw);
+}
+
+function update(){
+  nodes.forEach(n=>{
+    n.x+=n.vx;
+    n.y+=n.vy;
+    if(n.x<0||n.x>width) n.vx*=-1;
+    if(n.y<0||n.y>height) n.vy*=-1;
+  });
+}
+draw();
+
+// ----------------------
+// SIDE MENU NAVIGATION
+// ----------------------
+document.querySelectorAll('#side-menu a').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(link.getAttribute('href'));
+    if(target) {
+      const index = Array.from(slides).indexOf(target);
+      if(index >= 0) showSlide(index);
+    }
+  });
+});
+
+// Toggle menu
+const menuToggle = document.getElementById("menu-toggle");
+const sideMenu = document.getElementById("side-menu");
+
+menuToggle.addEventListener("click", () => {
+  sideMenu.classList.toggle("open");
+});
+
+// Close menu when a link is clicked & go to slide
+document.querySelectorAll('#side-menu a').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(link.getAttribute('href'));
+    if(target){
+      const index = Array.from(slides).indexOf(target);
+      if(index >= 0) showSlide(index);
+    }
+    sideMenu.classList.remove("open"); // auto-close menu
+  });
+});
+</script>
 </body>
 </html>
