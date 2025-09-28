@@ -49,10 +49,20 @@
   
   <img src="">
   <div class="controls">
-    <button disabled id="prev0">Prev</button>
+    <button style="background:white;" id="#">Prev</button>
     <button id="next0">Next</button>
   </div>
 </div>
+
+<script>
+  document.getElementById("wiki-btn").addEventListener("click", () => {
+    window.open(
+      "https://rohannahasselkus.github.io/GRN-Model/",
+      "_blank",
+      "noopener,noreferrer"
+    );
+  });
+</script>
 
 <!-- Example GRNs -->
 <div class="slide" id="slide1">
@@ -78,6 +88,7 @@
   <img src="">
   <div class="controls">
     <button id="prev1">Prev</button>
+    <button id="wiki-btn" onclick="window.open('https://rohannahasselkus.github.io/GRN-Model/')" style="background: #none;">GRN Model</button>
     <button id="next1">Next</button>
   </div>
 </div>
@@ -224,7 +235,6 @@
   <p> </p>
   <div class="controls">
     <button id="prev15">Prev</button>
-    <button disabled id="next15">Next</button>
   </div>
 </div>
 
