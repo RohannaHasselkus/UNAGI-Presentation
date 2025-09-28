@@ -142,32 +142,121 @@
 <!-- Theorem 1-->
 <div class="slide" id="slide6">
   <h1>Theorem 1</h1>
-  <p> </p>
+  <p><b>Theorem 1.</b> Any path <i>P<sub>b,c</sub></i> between nodes <i>b</i> and <i>c</i> in G contains a node <i>a</i> such that</p>
+  <p style="text-align:center;">
+    D<sub>a,b</sub> = D<sub>a,c</sub>,
+  </p>
+  <p>where D<sub>i,j</sub> represents the shortest unweighted graph distance between two nodes <i>i</i> and <i>j</i>.</p>
+
+  <p>Since <i>b</i> and <i>c</i> are of the same node type in a bipartite network, <i>P<sub>b,c</sub></i> must contain an odd number of intermediate nodes and an even number of connecting edges:</p>
+  <p style="text-align:center;">mod(D<sub>b,c</sub>, 2) = 0.</p>
+
+  <p>Moreover, D<sub>b,c</sub> = D<sub>c,b</sub>.</p>
+
+  <p>Traversing the first D<sub>b,c</sub>/2 edges in <i>P<sub>b,c</sub></i> starting at <i>b</i> gives a path <i>P<sub>b,x</sub></i> where <i>x ∉ {a,b}</i>. Traversing backwards along the last D<sub>b,c</sub>/2 edges starting at <i>c</i> gives a path <i>P<sub>c,y</sub></i> where <i>y ∉ {a,b}</i>.</p>
+
+  <p>Thus,</p>
+  <p style="text-align:center;">
+    D<sub>b,x</sub> = D<sub>c,y</sub> = D<sub>b,c</sub>/2.
+  </p>
+
+  <p>If <i>x = y</i>, then <i>x</i> satisfies the condition for node <i>a</i>. Assume for contradiction that <i>x ≠ y</i>.</p>
+  <p>Then either <i>x</i> is not connected to <i>y</i> or D<sub>x,y</sub> &gt; 0. Since <i>P<sub>b,c</sub></i> contains both <i>x</i> and <i>y</i>, some edges are missing, contradicting that it is a path.</p>
+
+  <p>If D<sub>x,y</sub> &gt; 0, then</p>
+  <p style="text-align:center;">
+    D<sub>b,c</sub> = D<sub>b,x</sub> + D<sub>x,y</sub> + D<sub>c,y</sub> &gt; D<sub>b,x</sub> + D<sub>c,y</sub>.
+  </p>
+
+  <p>Substituting D<sub>b,x</sub> = D<sub>c,y</sub> = D<sub>b,c</sub>/2 yields</p>
+  <p style="text-align:center;">
+    D<sub>b,c</sub> &gt; D<sub>b,c</sub>/2 + D<sub>b,c</sub>/2,
+  </p>
+  <p>contradicting D<sub>b,c</sub> = D<sub>b,c</sub>.</p>
+
+  <p>Hence <i>x = y</i>, so <i>x = a</i>, proving that D<sub>a,b</sub> = D<sub>a,c</sub>.</p>
+
   <div class="controls">
     <button id="prev6">Prev</button>
     <button id="next6">Next</button>
   </div>
 </div>
 
+
 <!-- Theorem 2-->
 <div class="slide" id="slide7">
   <h1>Theorem 2</h1>
-  <p> </p>
+  <p><b>Theorem 2.</b> For any path <i>P<sub>b,c</sub></i> of length <i>n</i> between nodes <i>b</i> and <i>c</i> in <i>G</i>, and any integers <i>n<sub>b</sub>, n<sub>c</sub> ≥ 0</i> such that <i>n<sub>b</sub> + n<sub>c</sub> = n</i>, there exists a <u>unique</u> node <i>a</i> lying in <i>P<sub>b,c</sub></i> such that</p>
+  
+  <p style="text-align:center;">
+    D<sub>a,b</sub> = n<sub>b</sub> &nbsp;&nbsp; and &nbsp;&nbsp; D<sub>a,c</sub> = n<sub>c</sub>,
+  </p>
+  
+  <p>where D<sub>i,j</sub> represents the shortest unweighted graph distance between two nodes <i>i</i> and <i>j</i>.</p>
+  
+  <p><b>Case 1:</b> n<sub>b</sub> = 0. Then n<sub>c</sub> = n. Axiomatically, D<sub>b,b</sub> = 0 = n<sub>b</sub>. Further, D<sub>b,c</sub> = n = n<sub>c</sub>. Therefore, <i>b</i> satisfies the condition for node <i>a</i>.</p>
+  
+  <p><b>Case 2:</b> n<sub>c</sub> = 0. Then n<sub>b</sub> = n. Axiomatically, D<sub>c,c</sub> = 0 = n<sub>c</sub>. Further, D<sub>c,b</sub> = n = n<sub>b</sub>. Therefore, <i>c</i> satisfies the condition for node <i>a</i>.</p>
+  
+  <p><b>Case 3:</b> n<sub>b</sub>, n<sub>c</sub> &gt; 0. We have D<sub>b,c</sub> = D<sub>c,b</sub>.</p>
+  
+  <p>Traversing the first n<sub>b</sub> edges in <i>P<sub>b,c</sub></i> starting at <i>b</i> results in a path <i>P<sub>b,x</sub></i> where <i>x ∉ {a,b}</i>. Traversing backwards along the last n<sub>c</sub> edges starting at <i>c</i> results in a path <i>P<sub>c,y</sub></i> where <i>y ∉ {a,b}</i>.</p>
+  
+  <p>Therefore,</p>
+  <p style="text-align:center;">
+    D<sub>b,x</sub> = n<sub>b</sub> &nbsp;&nbsp; and &nbsp;&nbsp; D<sub>c,y</sub> = n<sub>c</sub>.
+  </p>
+  
+  <p>If <i>x = y</i>, then <i>x</i> satisfies the condition for node <i>a</i>.</p>
+  
+  <p>Assume for contradiction that <i>x ≠ y</i>. Then either <i>x</i> is not connected to <i>y</i> or D<sub>x,y</sub> &gt; 0. Since <i>P<sub>b,c</sub></i> contains both <i>x</i> and <i>y</i>, not all edges in <i>P<sub>b,c</sub></i> are connected, contradicting its definition as a path.</p>
+  
+  <p>If D<sub>x,y</sub> &gt; 0, then</p>
+  <p style="text-align:center;">
+    D<sub>b,c</sub> = D<sub>b,x</sub> + D<sub>x,y</sub> + D<sub>c,y</sub> &gt; D<sub>b,x</sub> + D<sub>c,y</sub>.
+  </p>
+  
+  <p>By definition of <i>P<sub>b,c</sub></i>, D<sub>b,c</sub> = n. Substituting D<sub>b,x</sub> = n<sub>b</sub> and D<sub>c,y</sub> = n<sub>c</sub> gives</p>
+  
+  <p style="text-align:center;">
+    n &gt; n<sub>b</sub> + n<sub>c</sub> = n,
+  </p>
+  
+  <p>a contradiction.</p>
+  
+  <p>Thus <i>x = y</i>, so <i>x = a</i>, proving that D<sub>a,b</sub> = n<sub>b</sub> and D<sub>a,c</sub> = n<sub>c</sub>.</p>
+  
   <div class="controls">
     <button id="prev7">Prev</button>
     <button id="next7">Next</button>
   </div>
 </div>
 
-<!-- Validation-->
+
+<!-- Validation -->
 <div class="slide" id="slide8">
   <h1>Validation</h1>
-  <p> </p>
+  <ul>
+    <li>BLOBFISH used the following tissues to validate the algorithm: 
+      <i>Musculoskeletal, Artery, Skin, Lung, and Adipose</i>.
+    </li>
+    <li>We replicate this with UNAGI, initially creating <b>GGMs</b> (Gaussian Graphical Models), 
+      which represent conditional dependencies between genes, and then generating 
+      <b>Gene Correlation Networks</b>, which connect genes based on pairwise correlation in expression.
+    </li>
+    <li>Filtered the top and bottom 2.5% of the networks.</li>
+    <li>Intentional use of varied tissues with significantly different functions to clearly validate algorithm functionality.</li>
+    <li>Selected two tissue types: <b>Adipogenic</b> and <b>Skeletal-muscular</b>.</li>
+    <li>Found the genes associated with these tissues, while treating other tissues as "noise."</li>
+    <li>Verification step: genes associated with these tissues should not appear as "associated" with other tissues.</li>
+  </ul>
   <div class="controls">
     <button id="prev8">Prev</button>
     <button id="next8">Next</button>
   </div>
 </div>
+
+
 
 <!-- Genes of Interest -->
 <div class="slide" id="slide9">
