@@ -268,4 +268,13 @@ navigation
   background: rgba(42,157,143,0.9);
 }
 
+.slide-image {
+  display: block;
+  max-width: 50%;
+  margin: 1em auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+
 

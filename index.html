@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gene Networks Presentation</title>
 <link rel="stylesheet" href="style.css">
+<script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
 <body>
 
@@ -13,24 +14,25 @@
 
 <nav id="side-menu">
   <ul>
-    <li><a href="#slide0" data-slide="0">Introduction (theory)</a></li>
+    <li><a href="#slide0" data-slide="0">Introduction (Theory)</a></li>
     <li><a href="#slide1" data-slide="1">Example GRNs</a></li>
     <li><a href="#slide2" data-slide="2">Why Study GRNs</a></li>
-    <li><a href="#slide3" data-slide="3">Bipartite and Unipartite</a></li>
-    <li><a href="#slide4" data-slide="4">Background : BLOBFISH</a></li>
-    <li><a href="#slide5" data-slide="5">Introducing : UNAGI</a></li>
-    <li><a href="#slide6" data-slide="6">Theorem 1</a></li>
-    <li><a href="#slide7" data-slide="7">Theorem 2</a></li>
-    <li><a href="#slide8" data-slide="8">Validation</a></li>
-    <li><a href="#slide9" data-slide="9">Genes of Interest</a></li>
-    <li><a href="#slide10" data-slide="10">Overview of Tissues</a></li>
-    <li><a href="#slide11" data-slide="11">Results</a></li>
-    <li><a href="#slide12" data-slide="12">Interpretation</a></li>
-    <li><a href="#slide13" data-slide="13">Applications and Continued work</a></li>
-    <li><a href="#slide14" data-slide="14">Acknowledgments</a></li>
-    <li><a href="#slide15" data-slide="15">Works Cited</a></li>
+    <li><a href="#slide3" data-slide="3">Unipartite and Bipartite</a></li>
+    <li><a href="#slide4" data-slide="4">Background: BLOBFISH</a></li>
+    <li><a href="#slide5" data-slide="5">Seed Genes</a></li>
+    <li><a href="#slide6" data-slide="6">Introduction: UNAGI</a></li>
+    <li><a href="#slide7" data-slide="7">Theorem 1</a></li>
+    <li><a href="#slide8" data-slide="8">Theorem 2</a></li>
+    <li><a href="#slide9" data-slide="9">Validation</a></li>
+    <li><a href="#slide10" data-slide="10">Genes of Interest</a></li>
+    <li><a href="#slide11" data-slide="11">Overview of Tissues</a></li>
+    <li><a href="#slide12" data-slide="12">Results and Interpretation</a></li>
+    <li><a href="#slide14" data-slide="13">Applications and Continued Work</a></li>
+    <li><a href="#slide15" data-slide="14">Acknowledgments</a></li>
+    <li><a href="#slide16" data-slide="15">Works Cited</a></li>
   </ul>
 </nav>
+
 
 <canvas id="network"></canvas>
 
@@ -53,16 +55,6 @@
     <button id="next0">Next</button>
   </div>
 </div>
-
-<script>
-  document.getElementById("wiki-btn").addEventListener("click", () => {
-    window.open(
-      "https://rohannahasselkus.github.io/GRN-Model/",
-      "_blank",
-      "noopener,noreferrer"
-    );
-  });
-</script>
 
 <!-- Example GRNs -->
 <div class="slide" id="slide1">
@@ -95,18 +87,55 @@
 
 <!-- Why study GRNs -->
 <div class="slide" id="slide2">
-  <h1>The importance of Gene Regulatory Networks</h1>
-  <p>...</p>
+  <h1>The Importance of Gene Regulatory Networks</h1>
+  <p>GRNs help explain how identical genomes can give rise to distinct cell types. By analyzing these networks, researchers can identify key genes that act as control points or “hubs” of regulation.</p>
+  <ul>
+    <li><b>Disease insight:</b> Disruption in regulatory networks contributes to diseases like cancer, diabetes, and developmental disorders.</li>
+    <li><b>Cell reprogramming:</b> Understanding GRNs enables stem cell differentiation and regenerative medicine.</li>
+    <li><b>Evolutionary insight:</b> GRNs reveal how gene modules evolve and adapt to new environments.</li>
+    <li><b>Systems biology:</b> GRNs bridge molecular biology and computational modeling, forming a foundation for predictive biology.</li>
+  </ul>
   <div class="controls">
     <button id="prev2">Prev</button>
     <button id="next2">Next</button>
   </div>
 </div>
 
-<!-- Unipartite and Bipartite -->
+<!-- Unipartite and Bipartite (with D3 visualizations) -->
 <div class="slide" id="slide3">
   <h1>Unipartite and Bipartite Networks</h1>
-  <p> .... </p>
+  <p>In network theory, the structure of connections determines how information flows.</p>
+  <ul>
+    <li><b>Unipartite networks</b> contain nodes of a single "type" that can all affect eachother.</li>
+    <li><b> Examples using unipartite network applications:</b> protein-protein interaction networks, gene co-expression networks, metabolic networks </li>
+    <li><b>Bipartite networks</b> include two distinct node "types"</li>
+    <li><b>Examples of bipartite network applications: </b>gene-disease associations, gene-TF association</li>
+    <li>Bipartite structures allow us to model the separation between regulators and their targets, crucial for interpreting transcriptional hierarchies.</li>
+  </ul>
+  <p>Converting bipartite to unipartite projections allows comparison between regulatory and functional modules.</p>
+
+      <!-- Visualizations-->
+  <div class="viz-row">
+    <div class="viz" id="unipartite-viz">
+      <h3 class="small">Unipartite</h3>
+      <svg id="uni-svg" viewBox="0 0 800 360" preserveAspectRatio="xMidYMid meet"></svg>
+      <div style="margin-top:6px; display:flex; gap:8px; align-items:center;">
+        <button style="background-color: white;" id="restart-uni"></button>
+        <button style="background-color: white;" id="freeze-uni"></button>
+      </div>
+    </div>
+
+    <div class="viz" id="bipartite-viz">
+      <h3 class="small">Bipartite</h3>
+      <svg id="bi-svg" viewBox="0 0 800 360" preserveAspectRatio="xMidYMid meet"></svg>
+      <div style="margin-top:6px; display:flex; gap:8px; align-items:center;">
+        <button id="proj-left">Project (left)</button>
+        <button id="proj-right">Project (right)</button>
+        <button id="clear-proj">Clear projection</button>
+      </div>
+    </div>
+  </div>
+
   <div class="controls">
     <button id="prev3">Prev</button>
     <button id="next3">Next</button>
@@ -129,18 +158,52 @@
   </div>
 </div>
 
-<!-- UNAGI-->
 <div class="slide" id="slide5">
-  <h1>Introduction: UNAGI</h1>
-  <p> </p>
+  <h1>Seed Genes</h1>
+  <p>Researchers can observe from literature which genes are associated with certain interactions. When studying certain associations, it is essential to be able to study from the standpoint of certain already known genest.</p>
+  <ul>
+    <li><b>Definition:</b> Seed genes are a preselected subset of genes chosen for their known involvement in a specific biological process, phenotype, or condition.</li>
+    <li><b>Purpose:</b> They act as “anchors” or “entry points” to uncover related regulatory partners through network algorithms like BLOBFISH and UNAGI.</li>
+    <li><b>Importance:</b>
+      <ul>
+        <li>Focuses computational search on biologically relevant regions of the network.</li>
+        <li>Improves interpretability by centering on genes with prior evidence or clinical significance.</li>
+        <li>Helps detect hidden or novel connections between known players.</li>
+      </ul>
+    </li>
+    <li><b>Examples of use:</b>
+      <ul>
+        <li>In cancer research, <i>TP53</i> or <i>BRCA1</i> may serve as seed genes to identify tumor-suppressor pathways.</li>
+        <li>In adipose tissue studies, <i>PPARG</i> or <i>FABP4</i> can seed networks linked to lipid metabolism.</li>
+        <li>In muscle tissue, <i>MYOD1</i> and <i>ACTN2</i> can initiate subnetworks governing differentiation and contractility.</li>
+        <li>In developmental biology, Hox genes often serve as seeds to explore spatial patterning modules.</li>
+      </ul>
+    </li>
+  </ul>
   <div class="controls">
     <button id="prev5">Prev</button>
     <button id="next5">Next</button>
   </div>
 </div>
 
-<!-- Theorem 1-->
+
+<!-- UNAGI-->
 <div class="slide" id="slide6">
+  <h1>Introduction: UNAGI</h1>
+  <p>
+    <ul>
+      <li>Unipartite adaption of blobfish (able to jump across all hop counts and computes for all under given content eg. Hop=3 compute 1,2 and 3 hops)</li>
+      <li>Uses all the same elements as BLOBFISH: Breadth-first search algorithm,  objective to find compact subnetwork</li>
+    </ul>
+  </p>
+  <div class="controls">
+    <button id="prev6">Prev</button>
+    <button id="next6">Next</button>
+  </div>
+</div>
+
+<!-- Theorem 1-->
+<div class="slide" id="slide7">
   <h1>Theorem 1</h1>
   <p><b>Theorem 1.</b> Any path <i>P<sub>b,c</sub></i> between nodes <i>b</i> and <i>c</i> in G contains a node <i>a</i> such that</p>
   <p style="text-align:center;">
@@ -177,14 +240,14 @@
   <p>Hence <i>x = y</i>, so <i>x = a</i>, proving that D<sub>a,b</sub> = D<sub>a,c</sub>.</p>
 
   <div class="controls">
-    <button id="prev6">Prev</button>
-    <button id="next6">Next</button>
+    <button id="prev7">Prev</button>
+    <button id="next7">Next</button>
   </div>
 </div>
 
 
 <!-- Theorem 2-->
-<div class="slide" id="slide7">
+<div class="slide" id="slide8">
   <h1>Theorem 2</h1>
   <p><b>Theorem 2.</b> For any path <i>P<sub>b,c</sub></i> of length <i>n</i> between nodes <i>b</i> and <i>c</i> in <i>G</i>, and any integers <i>n<sub>b</sub>, n<sub>c</sub> ≥ 0</i> such that <i>n<sub>b</sub> + n<sub>c</sub> = n</i>, there exists a <u>unique</u> node <i>a</i> lying in <i>P<sub>b,c</sub></i> such that</p>
   
@@ -227,14 +290,14 @@
   <p>Thus <i>x = y</i>, so <i>x = a</i>, proving that D<sub>a,b</sub> = n<sub>b</sub> and D<sub>a,c</sub> = n<sub>c</sub>.</p>
   
   <div class="controls">
-    <button id="prev7">Prev</button>
-    <button id="next7">Next</button>
+    <button id="prev8">Prev</button>
+    <button id="next8">Next</button>
   </div>
 </div>
 
 
 <!-- Validation -->
-<div class="slide" id="slide8">
+<div class="slide" id="slide9">
   <h1>Validation</h1>
   <ul>
     <li>BLOBFISH used the following tissues to validate the algorithm: 
@@ -251,13 +314,13 @@
     <li>Verification step: genes associated with these tissues should not appear as "associated" with other tissues.</li>
   </ul>
   <div class="controls">
-    <button id="prev8">Prev</button>
-    <button id="next8">Next</button>
+    <button id="prev9">Prev</button>
+    <button id="next9">Next</button>
   </div>
 </div>
 
 <!-- Genes of Interest -->
-<div class="slide" id="slide9">
+<div class="slide" id="slide10">
   <h1>Genes of Interest</h1>
 
   <p>
@@ -275,14 +338,14 @@
   </b></p>
 
   <div class="controls">
-    <button id="prev9">Prev</button>
-    <button id="next9">Next</button>
+    <button id="prev10">Prev</button>
+    <button id="next10">Next</button>
   </div>
 </div>
 
 
 <!-- Overview of Tissues -->
-<div class="slide" id="slide10">
+<div class="slide" id="slide11">
   <h1>Overview of Tissues</h1>
 
   <h2>Musculoskeletal Tissue</h2>
@@ -328,26 +391,79 @@
   </ul>
 
   <div class="controls">
-    <button id="prev10">Prev</button>
-    <button id="next10">Next</button>
-  </div>
-</div>
-
-
-<!-- Results -->
-<div class="slide" id="slide11">
-  <h1>Results</h1>
-  <p> </p>
-  <div class="controls">
     <button id="prev11">Prev</button>
     <button id="next11">Next</button>
   </div>
 </div>
 
-<!-- Interpretation -->
+
+<!-- Results and Interpretation -->
 <div class="slide" id="slide12">
-  <h1>Interpretation</h1>
-  <p> </p>
+  <h1>Results and Interpretation</h1>
+
+  <p>
+    UNAGI was tested across multiple tissues using genes of interest (GOIs) associated with 
+    <b>adipose</b> and <b>musculoskeletal</b> systems. The model successfully recovered these genes 
+    in their correct tissues, showing strong biological specificity and consistency with expected patterns.
+  </p>
+
+  <table class="results-table">
+    <thead>
+      <tr>
+        <th>Tissue</th>
+        <th>GOIs Found</th>
+        <th>Total GOIs</th>
+        <th>Recovery Rate</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>Adipose</b></td>
+        <td>7</td>
+        <td>7</td>
+        <td>100%</td>
+        <td>All adipogenic genes correctly detected (PPARG, FABP4, ADIPOQ, etc.)</td>
+      </tr>
+      <tr>
+        <td><b>Skeletal</b></td>
+        <td>26</td>
+        <td>28</td>
+        <td>92.9%</td>
+        <td>Strong recovery of myogenic genes (MYH2, MYL1, TTN, TPM1, etc.)</td>
+      </tr>
+      <tr>
+        <td>Skin</td>
+        <td>33</td>
+        <td>35</td>
+        <td>94.3%</td>
+        <td>Overlap with muscle-associated genes due to shared cytoskeletal proteins</td>
+      </tr>
+      <tr>
+        <td>Lung</td>
+        <td>33</td>
+        <td>35</td>
+        <td>94.3%</td>
+        <td>Expected background connectivity; reflects metabolic housekeeping genes</td>
+      </tr>
+      <tr>
+        <td>Artery</td>
+        <td>33</td>
+        <td>35</td>
+        <td>94.3%</td>
+        <td>Consistent with structural and contractile gene overlap (e.g., smooth muscle)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="margin-top:1em;">
+    <b>Summary:</b>  
+    UNAGI successfully distinguished tissue-specific gene modules, 
+    accurately recovering all adipose genes and nearly all skeletal-muscular genes. 
+    The slight overlap with non-target tissues (Skin, Lung, Artery) is likely due to 
+    shared structural or metabolic components.
+  </p>
+
   <div class="controls">
     <button id="prev12">Prev</button>
     <button id="next12">Next</button>
@@ -355,7 +471,7 @@
 </div>
 
 <!-- Applications and Continued Work -->
-<div class="slide" id="slide13">
+<div class="slide" id="slide14">
   <h1>Applications and Continued Work</h1>
   <p> </p>
   <div class="controls">
@@ -365,9 +481,19 @@
 </div>
 
 <!-- Acknowledgments -->
-<div class="slide" id="slide14">
+<div class="slide" id="slide15">
   <h1>Acknowledgments</h1>
-  <p> </p>
+  <p> I would like to thank the following individuals for their mentorship in this project</p>
+  <ul>
+    <li>Prof. John Quackenbush
+      <img src="https://www.biocom.org/wp-content/uploads/2023/05/John-Quackenbush-Professor-Computational-Biology-and-Chair-Department-of-Biostatistics-Harvard-T.H.-Chan-School-of-Public-Health-768x768.png" alt="Prof. John Quackenbush" class="slide-image">
+    </li>
+    <li>Tara Eicher, PhD</li>
+    <img src="https://i1.rgstatic.net/ii/profile.image/898353147703297-1591195489581_Q512/Tara-Eicher-2.jpg" alt="Tara Eicher, PhD" class="slide-image">
+    <li>Kate Hoff Shutta, PhD</li>
+    <img src="https://raji-lab.github.io/img/People/Kate.jpg" alt="Kate Hoff Shutta, PhD" class="slide-image">
+  </ul>
+  <p>A special thanks to Harvard T.H. Chan School of Public Health and the UChicago Jeff Metcalf Internship program for allowing me to conduct research in Boston this summer</p>
   <div class="controls">
     <button id="prev14">Prev</button>
     <button id="next14">Next</button>
@@ -383,143 +509,6 @@
   </div>
 </div>
 
-<script>
-// ----------------------
-// SLIDE LOGIC (Enhanced version)
-// ----------------------
-let currentSlide = 0;
-const slides = document.querySelectorAll(".slide");
-const totalSlides = slides.length;
-
-function showSlide(n){
-  // Handle wraparound
-  if(n >= totalSlides) n = 0;
-  if(n < 0) n = totalSlides - 1;
-  
-  slides[currentSlide].classList.remove("active");
-  slides[n].classList.add("active");
-  currentSlide = n;
-}
-
-// Enhanced button handling with better error checking
-slides.forEach((slide,i)=>{
-  const prev = slide.querySelector("#prev"+i);
-  const next = slide.querySelector("#next"+i);
-  if(prev) prev.addEventListener("click", ()=>showSlide(i-1));
-  if(next) next.addEventListener("click", ()=>showSlide(i+1));
-});
-
-// Arrow key navigation
-document.addEventListener("keydown",(e)=>{
-  if(e.key==="ArrowRight") showSlide(currentSlide+1);
-  if(e.key==="ArrowLeft") showSlide(currentSlide-1);
-});
-
-// ----------------------
-// YOUR ORIGINAL NETWORK BACKGROUND
-// ----------------------
-const canvas = document.getElementById("network");
-const ctx = canvas.getContext("2d");
-let width, height;
-let nodes = [];
-const numNodes = 150; // number of dots
-
-function resize(){
-  width = window.innerWidth;
-  height = window.innerHeight;
-  canvas.width = width;
-  canvas.height = height;
-}
-window.addEventListener("resize", resize);
-resize();
-
-function initNodes(){
-  nodes = [];
-  for(let i=0;i<numNodes;i++){
-    nodes.push({
-      x: Math.random()*width,
-      y: Math.random()*height,
-      vx: (Math.random()-0.5)*0.5,
-      vy: (Math.random()-0.5)*0.5,
-      r: 3 + Math.random()*3 // larger dots: 3–6
-    });
-  }
-}
-initNodes();
-
-function draw(){
-  ctx.clearRect(0,0,width,height);
-  // edges
-  for(let i=0;i<numNodes;i++){
-    for(let j=i+1;j<numNodes;j++){
-      const dx = nodes[i].x-nodes[j].x;
-      const dy = nodes[i].y-nodes[j].y;
-      const dist = Math.sqrt(dx*dx + dy*dy);
-      if(dist<120){
-        ctx.strokeStyle = `rgba(111,177,160,${1-dist/120})`;
-        ctx.lineWidth = 2; // thicker lines
-        ctx.beginPath();
-        ctx.moveTo(nodes[i].x,nodes[i].y);
-        ctx.lineTo(nodes[j].x,nodes[j].y);
-        ctx.stroke();
-      }
-    }
-  }
-  // nodes
-  nodes.forEach(n=>{
-    ctx.beginPath();
-    ctx.arc(n.x,n.y,n.r,0,2*Math.PI);
-    ctx.fillStyle = "#2a9d8f";
-    ctx.fill();
-  });
-  update();
-  requestAnimationFrame(draw);
-}
-
-function update(){
-  nodes.forEach(n=>{
-    n.x+=n.vx;
-    n.y+=n.vy;
-    if(n.x<0||n.x>width) n.vx*=-1;
-    if(n.y<0||n.y>height) n.vy*=-1;
-  });
-}
-draw();
-
-// ----------------------
-// SIDE MENU NAVIGATION
-// ----------------------
-document.querySelectorAll('#side-menu a').forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault();
-    const target = document.querySelector(link.getAttribute('href'));
-    if(target) {
-      const index = Array.from(slides).indexOf(target);
-      if(index >= 0) showSlide(index);
-    }
-  });
-});
-
-// Toggle menu
-const menuToggle = document.getElementById("menu-toggle");
-const sideMenu = document.getElementById("side-menu");
-
-menuToggle.addEventListener("click", () => {
-  sideMenu.classList.toggle("open");
-});
-
-// Close menu when a link is clicked & go to slide
-document.querySelectorAll('#side-menu a').forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault();
-    const target = document.querySelector(link.getAttribute('href'));
-    if(target){
-      const index = Array.from(slides).indexOf(target);
-      if(index >= 0) showSlide(index);
-    }
-    sideMenu.classList.remove("open"); // auto-close menu
-  });
-});
-</script>
+<script src="script.js"></script>
 </body>
 </html>
