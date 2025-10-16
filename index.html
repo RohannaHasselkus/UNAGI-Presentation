@@ -79,11 +79,11 @@
 <!-- Why study GRNs -->
 <div class="slide" id="slide2">
   <h1>The Importance of Gene Regulatory Networks</h1>
-  <p>GRNs help explain how identical genomes can give rise to distinct cell types. By analyzing these networks, researchers can identify key genes that act as control points or “hubs” of regulation.</p>
+  <p>GRNs help explain how identical genomes can give rise to distinct cell types<sup>(Hartmann et al., 2019; Macneil & Walhout, 2011)</sup>. By analyzing these networks, researchers can identify key genes that act as control points or “hubs” of regulation<sup>(de la Fuente, 2010; Sonawane et al., 2021)</sup>.</p>
   <ul>
-    <li><b>Disease insight:</b> Disruption in regulatory networks contributes to diseases like cancer, diabetes, and developmental disorders.</li>
-    <li><b>Evolutionary insight:</b> GRNs reveal how gene modules evolve and adapt to new environments.</li>
-    <li><b>Systems biology:</b> GRNs bridge molecular biology and computational modeling, forming a foundation for predictive biology.</li>
+    <li><b>Disease insight:</b> Disruption in regulatory networks contributes to diseases like cancer, diabetes, and developmental disorders<sup>(Kuipers et al., 2015; Ponzio et al., 2018; Richard et al., 2020)</sup>.</li>
+    <li><b>Evolutionary insight:</b> GRNs reveal how gene modules evolve and adapt to new environments<sup>(Jones & Vandepoele, 2020)</sup>.</li>
+    <li><b>Systems biology:</b> GRNs bridge molecular biology and computational modeling, forming a foundation for predictive biology<sup>(Tieri et al., 2019; de la Fuente, 2010)</sup>.</li>
   </ul>
   <div class="controls">
     <button id="prev2">Prev</button>
@@ -94,15 +94,15 @@
 <!-- Unipartite and Bipartite (with D3 visualizations) -->
 <div class="slide" id="slide3">
   <h1>Unipartite and Bipartite Networks</h1>
-  <p>In network theory, the structure of connections determines how information flows.</p>
+  <p>In network theory, the structure of connections determines how information flows<sup>(Askar et al., 2021; Tieri et al., 2019)</sup>.</p>
   <ul>
-    <li><b>Unipartite networks</b> contain nodes of a single "type" that can all affect eachother.</li>
-    <li><b> Examples using unipartite network applications:</b> protein-protein interaction networks, gene co-expression networks, metabolic networks </li>
-    <li><b>Bipartite networks</b> include two distinct node "types"</li>
-    <li><b>Examples of bipartite network applications: </b>gene-disease associations, gene-TF association</li>
-    <li>Bipartite structures allow us to model the separation between regulators and their targets, crucial for interpreting transcriptional hierarchies.</li>
+    <li><b>Unipartite networks</b> contain nodes of a single "type" that can all affect eachother<sup>(Tieri et al., 2019)</sup>.</li>
+    <li><b> Examples using unipartite network applications:</b> protein-protein interaction networks, gene co-expression networks, metabolic networks<sup>(Macneil & Walhout, 2011; Hartmann et al., 2019)</sup></li>
+    <li><b>Bipartite networks</b> include two distinct node "types"<sup>(Eicher et al., 2025)</sup></li>
+    <li><b>Examples of bipartite network applications: </b>gene-disease associations, gene-TF association<sup>(Sonawane et al., 2021; Eicher et al., 2025)</sup></li>
+    <li>Bipartite structures allow us to model the separation between regulators and their targets, crucial for interpreting transcriptional hierarchies<sup>(de la Fuente, 2010; Hartmann et al., 2019)</sup>.</li>
   </ul>
-  <p>Converting bipartite to unipartite projections allows comparison between regulatory and functional modules.</p>
+</div>
 
       <!-- Visualizations-->
   <div class="viz-row">
@@ -150,23 +150,23 @@
 
 <div class="slide" id="slide5">
   <h1>Seed Genes</h1>
-  <p>Researchers can observe from literature which genes are associated with certain interactions. When studying certain associations, it is essential to be able to study from the standpoint of certain already known genest.</p>
+  <p>Researchers can observe from literature which genes are associated with certain interactions<sup>(de la Fuente, 2010; Hartmann et al., 2019)</sup>. When studying certain associations, it is essential to be able to study from the standpoint of certain already known genes<sup>(Sonawane et al., 2021; Eicher et al., 2025)</sup>.</p>
   <ul>
-    <li><b>Definition:</b> Seed genes are a preselected subset of genes chosen for their known involvement in a specific biological process, phenotype, or condition.</li>
-    <li><b>Purpose:</b> They act as “anchors” or “entry points” to uncover related regulatory partners through network algorithms like BLOBFISH and UNAGI.</li>
+    <li><b>Definition:</b> Seed genes are a preselected subset of genes chosen for their known involvement in a specific biological process, phenotype, or condition<sup>(Tieri et al., 2019; Macneil & Walhout, 2011)</sup>.</li>
+    <li><b>Purpose:</b> They act as “anchors” or “entry points” to uncover related regulatory partners through network algorithms like BLOBFISH and UNAGI<sup>(Eicher et al., 2025; Askar et al., 2021)</sup>.</li>
     <li><b>Importance:</b>
       <ul>
-        <li>Focuses computational search on biologically relevant regions of the network.</li>
-        <li>Improves interpretability by centering on genes with prior evidence or clinical significance.</li>
-        <li>Helps detect hidden or novel connections between known players.</li>
+        <li>Focuses computational search on biologically relevant regions of the network<sup>(Tieri et al., 2019)</sup>.</li>
+        <li>Improves interpretability by centering on genes with prior evidence or clinical significance<sup>(Sonawane et al., 2021; Hartmann et al., 2019)</sup>.</li>
+        <li>Helps detect hidden or novel connections between known players<sup>(de la Fuente, 2010; Eicher et al., 2025)</sup>.</li>
       </ul>
     </li>
     <li><b>Examples of use:</b>
       <ul>
-        <li>In cancer research, <i>TP53</i> or <i>BRCA1</i> may serve as seed genes to identify tumor-suppressor pathways.</li>
-        <li>In adipose tissue studies, <i>PPARG</i> or <i>FABP4</i> can seed networks linked to lipid metabolism.</li>
-        <li>In muscle tissue, <i>MYOD1</i> and <i>ACTN2</i> can initiate subnetworks governing differentiation and contractility.</li>
-        <li>In developmental biology, Hox genes often serve as seeds to explore spatial patterning modules.</li>
+        <li>In cancer research, <i>TP53</i> or <i>BRCA1</i> may serve as seed genes to identify tumor-suppressor pathways<sup>(Kuipers et al., 2015; Ponzio et al., 2018)</sup>.</li>
+        <li>In adipose tissue studies, <i>PPARG</i> or <i>FABP4</i> can seed networks linked to lipid metabolism<sup>(Richard et al., 2020; Ou-yang & Dai, 2023)</sup>.</li>
+        <li>In muscle tissue, <i>MYOD1</i> and <i>ACTN2</i> can initiate subnetworks governing differentiation and contractility<sup>(Bortoluzzi et al., 2000; Dave et al., 2025)</sup>.</li>
+        <li>In developmental biology, Hox genes often serve as seeds to explore spatial patterning modules<sup>(Hartmann et al., 2019; Macneil & Walhout, 2011)</sup>.</li>
       </ul>
     </li>
   </ul>
@@ -341,44 +341,44 @@
 
   <h2>Musculoskeletal Tissue</h2>
   <ul>
-    <li><b>Responsible for conscious movements</b> of the body</li>
-    <li>Also known as <b>striated muscle</b> due to fine red and white line patterns</li>
-    <li><b>Muscle fibers</b> (<i>fasciculi</i>) are surrounded by <i>endomysium</i>, bundled by <i>perimysium</i>, and enclosed in <i>epimysium</i></li>
-    <li>Fibers are made of <b>myofibrils</b> → contain multiple <b>myofilaments</b></li>
-    <li><b>Striated arrangement</b> forms <b>sarcomeres</b>, the primary contracting unit of the muscle</li>
+    <li><b>Responsible for conscious movements</b> of the body<sup>(Dave et al., 2025)</sup></li>
+    <li>Also known as <b>striated muscle</b> due to fine red and white line patterns<sup>(Bortoluzzi et al., 2000)</sup></li>
+    <li><b>Muscle fibers</b> (<i>fasciculi</i>) are surrounded by <i>endomysium</i>, bundled by <i>perimysium</i>, and enclosed in <i>epimysium</i><sup>(Dave et al., 2025)</sup></li>
+    <li>Fibers are made of <b>myofibrils</b> → contain multiple <b>myofilaments</b><sup>(Bortoluzzi et al., 2000)</sup></li>
+    <li><b>Striated arrangement</b> forms <b>sarcomeres</b>, the primary contracting unit of the muscle<sup>(Dave et al., 2025)</sup></li>
   </ul>
 
   <h2>Adipose Tissue</h2>
   <ul>
-    <li>Two types: <b>white adipose tissue (WAT)</b> and <i>brown adipose tissue (BAT)</i> — <b>WAT was analyzed</b></li>
-    <li>Functions: <b>energy storage</b>, <b>endocrine signaling</b>, and <b>insulin sensitivity</b></li>
-    <li><b>Constructed from adipocytes</b> (fat cells)</li>
-    <li>Cells contain a <b>large single lipid droplet</b>, with organelles on the periphery</li>
+    <li>Two types: <b>white adipose tissue (WAT)</b> and <i>brown adipose tissue (BAT)</i> — <b>WAT was analyzed</b><sup>(Richard et al., 2020)</sup></li>
+    <li>Functions: <b>energy storage</b>, <b>endocrine signaling</b>, and <b>insulin sensitivity</b><sup>(Richard et al., 2020; Ou-yang & Dai, 2023)</sup></li>
+    <li><b>Constructed from adipocytes</b> (fat cells)<sup>(Richard et al., 2020)</sup></li>
+    <li>Cells contain a <b>large single lipid droplet</b>, with organelles on the periphery<sup>(Ou-yang & Dai, 2023)</sup></li>
   </ul>
 
   <h2>Skin Tissue</h2>
   <ul>
-    <li>Made of <b>epidermis, dermis, and hypodermis</b>; the <b>dermis is the largest layer</b> and primary collection site</li>
-    <li>Contains <b>connective tissue</b>, <b>blood/lymphatic vessels</b>, and <b>hair follicles</b></li>
-    <li><b>Dermatomes</b>: regions of skin linked to spinal nerves, transmit <b>pain stimuli</b></li>
+    <li>Made of <b>epidermis, dermis, and hypodermis</b>; the <b>dermis is the largest layer</b> and primary collection site<sup>(Lopez-Ojeda et al., 2025)</sup></li>
+    <li>Contains <b>connective tissue</b>, <b>blood/lymphatic vessels</b>, and <b>hair follicles</b><sup>(Lopez-Ojeda et al., 2025)</sup></li>
+    <li><b>Dermatomes</b>: regions of skin linked to spinal nerves, transmit <b>pain stimuli</b><sup>(Lopez-Ojeda et al., 2025)</sup></li>
   </ul>
 
   <h2>Artery Tissue</h2>
   <ul>
     <li>Three layers:
       <ol type="1">
-        <li><b><i>Tunica intima</i></b> – inner layer with <b>endothelial cells</b>, enables oxygen-rich blood flow</li>
-        <li><b><i>Media</i></b> – contains <b>smooth muscle</b> that controls <b>vasodilation and vasoconstriction</b></li>
-        <li><b><i>Adventitia</i></b> – outer layer connecting arteries to other body tissues</li>
+        <li><b><i>Tunica intima</i></b> – inner layer with <b>endothelial cells</b>, enables oxygen-rich blood flow<sup>(Mercadante & Raja, 2025)</sup></li>
+        <li><b><i>Media</i></b> – contains <b>smooth muscle</b> that controls <b>vasodilation and vasoconstriction</b><sup>(Mercadante & Raja, 2025)</sup></li>
+        <li><b><i>Adventitia</i></b> – outer layer connecting arteries to other body tissues<sup>(Mercadante & Raja, 2025)</sup></li>
       </ol>
     </li>
   </ul>
 
   <h2>Lung Tissue</h2>
   <ul>
-    <li>Respiratory epithelium includes: <b>Ciliated, Goblet, Basal, Brush, and Neuroendocrine cells</b></li>
-    <li>Most abundant: <b>Ciliated cells</b> – regulate the <b>mucociliary escalator</b></li>
-    <li><i>This escalator removes debris from the respiratory system</i></li>
+    <li>Respiratory epithelium includes: <b>Ciliated, Goblet, Basal, Brush, and Neuroendocrine cells</b><sup>(Khan & Carey, 2025)</sup></li>
+    <li>Most abundant: <b>Ciliated cells</b> – regulate the <b>mucociliary escalator</b><sup>(Khan & Carey, 2025)</sup></li>
+    <li><i>This escalator removes debris from the respiratory system</i><sup>(Khan & Carey, 2025)</sup></li>
   </ul>
 
   <div class="controls">
