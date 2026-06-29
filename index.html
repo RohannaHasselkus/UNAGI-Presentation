@@ -385,78 +385,43 @@
 </div>
 
 <!-- Results and Interpretation -->
+<!-- Results and Interpretation -->
 <div class="slide" id="slide12">
   <h1>Results and Interpretation</h1>
 
+  <h2>Validation Strategy</h2>
+  <ul>
+    <li>Constructed tissue-specific gene co-expression networks from <b>GTEx</b>.</li>
+    <li>Tested UNAGI using <b>33 literature-derived seed genes</b>:
+      <ul>
+        <li>26 skeletal muscle genes</li>
+        <li>7 adipogenesis genes</li>
+      </ul>
+    </li>
+    <li>Compared results across <b>skeletal muscle, subcutaneous adipose, lung, skin, and aorta</b>.</li>
+    <li>Benchmarked against <b>100 randomized seed sets</b> for each tissue.</li>
+  </ul>
+
+  <h2>Major Findings</h2>
+  <ul>
+    <li><b>Skeletal muscle genes</b> exhibited significantly greater <b>1-hop connectivity</b> only within skeletal muscle.</li>
+    <li><b>Adipogenesis genes</b> exhibited significantly greater <b>2-hop connectivity</b> only within subcutaneous adipose tissue.</li>
+    <li>Other tissues did not show comparable enrichment, demonstrating tissue specificity.</li>
+    <li>Randomized gene sets failed to reproduce these connectivity patterns.</li>
+  </ul>
+
+  <h2>Interpretation</h2>
   <p>
-    UNAGI was tested across multiple tissues using genes of interest (GOIs) associated with 
-    <b>adipose</b> and <b>musculoskeletal</b> systems. The model successfully recovered these genes 
-    in their correct tissues, showing strong biological specificity and consistency with expected patterns.
+    UNAGI identifies biologically meaningful subnetworks by recovering tissue-specific
+    Connectivity patterns rather than simply identifying nearby genes. The observed
+    enrichment agrees with known biology, supporting UNAGI as an effective method
+    for extracting subnetworks from unipartite gene co-expression networks.
   </p>
 
-  <table class="results-table">
-    <thead>
-      <tr>
-        <th>Tissue</th>
-        <th>GOIs Found</th>
-        <th>Total GOIs</th>
-        <th>Recovery Rate</th>
-        <th>Notes</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><b>Adipose</b></td>
-        <td>7</td>
-        <td>7</td>
-        <td>100%</td>
-        <td>All adipogenic genes correctly detected (PPARG, FABP4, ADIPOQ, etc.)</td>
-      </tr>
-      <tr>
-        <td><b>Skeletal</b></td>
-        <td>26</td>
-        <td>28</td>
-        <td>92.9%</td>
-        <td>Strong recovery of myogenic genes (MYH2, MYL1, TTN, TPM1, etc.)</td>
-      </tr>
-      <tr>
-        <td>Skin</td>
-        <td>33</td>
-        <td>35</td>
-        <td>94.3%</td>
-        <td>Overlap with muscle-associated genes due to shared cytoskeletal proteins</td>
-      </tr>
-      <tr>
-        <td>Lung</td>
-        <td>33</td>
-        <td>35</td>
-        <td>94.3%</td>
-        <td>Expected background connectivity; reflects metabolic housekeeping genes</td>
-      </tr>
-      <tr>
-        <td>Artery</td>
-        <td>33</td>
-        <td>35</td>
-        <td>94.3%</td>
-        <td>Consistent with structural and contractile gene overlap (e.g., smooth muscle)</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p style="margin-top:1em;">
-    <b>Summary:</b>  
-    UNAGI successfully distinguished tissue-specific gene modules, 
-    accurately recovering all adipose genes and nearly all skeletal-muscular genes. 
-    The slight overlap with non-target tissues (Skin, Lung, Artery) is likely due to 
-    shared structural or metabolic components.
-  </p>
-
-  <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXcSM5vNP-q_X-hXS7WL1ong_bd5pGNcZMFNXrl5a5-qxL-XGxM48-iWYZhPSOrzDEbe6rZDOu5j7XnGereDWGpUOHh6SxsDZ0ufVWr-1J6yk153EgYDbtX41DuBsbAaeOvComrQNETHA9clD5FFTFGH2E5hlA?key=8Avs8Jn9BV5RaTnfkCzRiQ">
-  <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXffQfkuPbmOrsZDgX9U5qbTK6RS0tq_F0YM2DGtF1aaXNInDiSKJhoRKlMbsRK9_5mrHwJ40GyKA-3lnZQU4T3O43jWa6IIcK0g8oVXfWC0gKPT_qEvEpONgBjwGZE_DNUCavfa5-V0x-d3zBlfx4_8QplbWms?key=8Avs8Jn9BV5RaTnfkCzRiQ">
-  <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXdpglA0TPUISIfTIA06SLhjLbPcFI958JwCkLvu-GlxfURn8-oB68gf4Lw0mwg04q4grHHkT0Z-tYPvwM4hsKpKF1TpOi8ran2H91igD7xJSI0SsSTXhJBhi3iDq5xFyOoYB51UltkLzM-BhTz2JIdbVCmOVd8?key=8Avs8Jn9BV5RaTnfkCzRiQ">
-  <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXda4wj_xZ8Kp0gKRpJiJs3d6ypnbm2qxKf0w2V7TTFXtJz2EQKLhLj2CD88EW-6BPpuBsOY1ZxlRdJcmUXe4Icytxc2xCiScZQoodfQR1eeDjPXbXAuGHudJuYLk3nDxI3ajehLMPvBXEPBNXhzz3NlmvWDuA?key=8Avs8Jn9BV5RaTnfkCzRiQ">
-  <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXcJuTwe5HfbU0fhgRy5wxZ30uljPSZ1ZfDjC1JZQD2c3E7rWwI6dnYmW0tCvOyEpvfkzJKk_TX_b3Pu-wJkCUxFVdrptlylz5Ti0VhChwdvHv_LBqW36KlaElApDM533O7BJdwZO_X9-2nKFozZSSIWBAxqc5E?key=8Avs8Jn9BV5RaTnfkCzRiQ">
-
+  <div style="display:flex; gap:20px; justify-content:center; margin-top:20px;">
+      <img src="images/table1.png" style="width:38%;">
+      <img src="images/figure2.png" style="width:50%;">
+  </div>
 
   <div class="controls">
     <button id="prev12">Prev</button>
@@ -467,12 +432,21 @@
 <!-- Continued Work -->
 <div class="slide" id="slide14">
   <h1>Continued Work</h1>
-  <p> <ul><li>We plan to further analyze the connectivity between the gene correlaton networks for the tissues to further validate UNAGI.</li>
-    <li> Analyze whether there is increased connectivity between adipogenic genes in adipose-specific networks</li>
-    <li> Analyze whether there is Increased connectivity between skeletal muscle genes in skeletal muscle-specific networks </li>
-    <li>Pathway analysis of the genes that are one hop away from the seed genes and determine whether the pathways reflect tissue specific activity</li>
-</ul>
+<h2>Future Biological Applications</h2>
+  <ul>
+    <li>Apply UNAGI to protein-protein interaction, partial correlation, and multi-omic networks.</li>
+    <li>Perform pathway enrichment analysis on intermediate (1-hop and 2-hop) connector genes.</li>
+    <li>Identify novel regulatory genes linking known disease- or tissue-associated seed genes.</li>
+    <li>Extend analyses beyond normal tissue biology to disease-associated gene networks.</li>
+  </ul>
+
+  <h2>Take-home Message</h2>
+  <p>
+    UNAGI provides a deterministic approach for identifying biologically meaningful
+    subnetworks in unipartite networks while preserving multiple redundant pathways,
+    making it broadly applicable across systems biology.
   </p>
+  
   <div class="controls">
     <button id="prev13">Prev</button>
     <button id="next13">Next</button>
